@@ -14,6 +14,18 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 
+let meshfloor ;
+
+meshfloor = new THREE.Mesh(
+    new THREE.CircleGeometry(4,32),
+    new THREE.MeshBasicMaterial({color:0xeeeeee})
+
+);
+meshfloor.rotation.x -= Math.PI /2;
+scene.add(meshfloor);
+
+
+
 const loader = new GLTFLoader();
 let obj;
 loader.load('model.gltf', function (gltf) {
@@ -24,6 +36,7 @@ loader.load('model.gltf', function (gltf) {
             node.receiveShadow = true;
         }
     });
+    obj.position.y += 2;
     scene.add(obj);
 });
 
@@ -67,8 +80,8 @@ animate();
 const colorPicker = document.getElementById('colorPicker');
 colorPicker.addEventListener('input', (event) => {
     const color = new THREE.Color(event.target.value);
-    if (obj) {
-        obj.traverse(function (node) {
+    if (meshfloor) {
+        meshfloor.traverse(function (node) {
             if (node.isMesh) {
                 node.material.color = color;
             }
