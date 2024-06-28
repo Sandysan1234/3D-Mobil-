@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepeda Balap</title>
+    <style>
+      body{
+        margin:0;
+      }
+      canvas{
+        display: block;
+      }
+      #controls { position: absolute; top: 10px; left: 10px; background: white; padding: 10px; border-radius: 8px; }
+    </style>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+          }
+        }
+    </script>
+</head>
+<body>
+  <div id="controls">
+    <label for="colorPicker">Color:</label>
+    <input type="color" id="colorPicker" value="#ff0000">
+  </div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
